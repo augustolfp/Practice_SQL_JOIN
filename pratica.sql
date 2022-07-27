@@ -60,4 +60,25 @@ FROM
 WHERE 
   exp."userId" = 50 
   AND exp."endDate" IS NULL;
+--------------------------------------------------------------------------
 
+  ## BÔNUS
+  
+  SELECT
+	s.id,
+	s.name AS school,
+	c.name AS course,
+	co.name AS company,
+	r.name AS "role"
+FROM
+	educations e
+	JOIN schools s ON s.id=e."schoolId"
+	JOIN courses c ON c.id=e."courseId"
+	JOIN users u ON u.id=e."userId"
+	JOIN applicants a ON a."userId"=u.id
+	JOIN jobs j ON j.id=a."jobId"
+	JOIN roles r ON r.id=j."roleId"
+	JOIN companies co ON co.id=j."companyId"
+WHERE r.name='Software Engineer'
+	AND co.id=10
+	AND j.active=true;
