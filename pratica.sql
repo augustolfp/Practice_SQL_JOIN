@@ -46,7 +46,7 @@ WHERE
   
   ## Questão 4
   
-  SELECT 
+SELECT 
   exp."userId" AS "id", 
   users.name AS "name", 
   roles.name AS "role", 
@@ -58,4 +58,6 @@ FROM
   JOIN roles ON roles.id = exp."roleId" 
   JOIN companies ON companies.id = exp."companyId" 
 WHERE 
-  exp."endDate" IS NULL;
+  exp."userId" = 50 
+  AND exp."endDate" IS NULL;
+
